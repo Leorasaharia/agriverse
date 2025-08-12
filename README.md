@@ -1,9 +1,3 @@
-Got it — I’ll make you a clean, professional **README.md** for your *Agriverse* project based on what we’ve done so far in your Colab and hackathon prep.
-Here’s the draft:
-
----
-
-````markdown
 # 🌾 Agriverse — AI-Powered Agricultural Advisor
 
 ## Overview
@@ -77,7 +71,7 @@ cd agriverse
 
 ### 2. Open Colab Notebook
 
-[Run in Colab](https://colab.research.google.com/drive/1eL7Q_RdV2hs71Ou4ErbEKlTzkrPzwNUY?usp=sharing)
+[View in Colab](https://colab.research.google.com/drive/1eL7Q_RdV2hs71Ou4ErbEKlTzkrPzwNUY?usp=sharing)
 
 ### 3. Train Models
 
