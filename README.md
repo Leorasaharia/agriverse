@@ -63,7 +63,11 @@ The goal is to **synthesize insights across domains** like weather, crop cycles,
 ---
 
 📸 Demo Platform Screenshots
-Below are sample screenshots from the AgriVerse AI Gradio interface showing how our AI assists farmers with disease detection, entity recognition, and multilingual agricultural Q&A.
+Below are sample screenshots from the AgriVerse AI Gradio interface showing how our AI assists farmers with disease detection, entity recognition, and multilingual agricultural Q&A. <img width="1899" height="806" alt="synopsis1 (1)" src="https://github.com/user-attachments/assets/4a707735-fa65-4fe9-8b8c-355cd0e6d32d" />
+<img width="1877" height="850" alt="synopsis1 (4)" src="https://github.com/user-attachments/assets/f395551a-74d9-4d18-9e55-de35ca6aef88" />
+<img width="1891" height="470" alt="synopsis1 (3)" src="https://github.com/user-attachments/assets/3d5a70a1-e735-4bb4-b2d3-a089d13da1fd" />
+<img width="1602" height="416" alt="synopsis1 (2)" src="https://github.com/user-attachments/assets/0b0241de-8643-4907-8460-6012d9c83cd8" />
+
 
 ---
 
