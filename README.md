@@ -62,6 +62,11 @@ The goal is to **synthesize insights across domains** like weather, crop cycles,
 
 ---
 
+📸 Demo Platform Screenshots
+Below are sample screenshots from the AgriVerse AI Gradio interface showing how our AI assists farmers with disease detection, entity recognition, and multilingual agricultural Q&A.
+
+---
+
 ## 🚀 How to Run
 ### 1. Clone the repo
 ```bash
