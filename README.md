@@ -59,6 +59,40 @@ The goal is to **synthesize insights across domains** like weather, crop cycles,
   - MobileNetV3 (alternative lightweight vision model)  
   - XLM-RoBERTa (NER)  
   - mT5-small (multilingual QA)
+---
+## Frontend
+##### Unified Agricultural Advisor Interface
+
+The Agriverse frontend is a Streamlit-based web application designed to make our multimodal AI agents accessible in a single, easy-to-use platform.
+
+🌟 Frontend Capabilities
+
+-Vision-based Crop Disease Detection
+-Upload images of tomato or paddy leaves.
+-Get instant classification results with detected disease name and confidence score.
+-NER-based Entity Recognition (Hindi & Indic Languages)
+-Extracts key agricultural entities such as crop names, pest names, and locations from user-provided text.
+-Works with Hindi and other Indic languages for localized insights.
+
+##### Multilingual Agricultural Q&A 
+
+-Chatbot powered by mT5-small for domain-specific question answering.
+-Understands both Hindi and English queries.
+-Provides context-aware, farmer-friendly recommendations.
+
+Knowledge Synthesis
+-
+Combines weather, crop cycles, pest control, soil health, and finance data into actionable guidance.
+
+
+📱 User Experience
+
+-Mobile & Low-Bandwidth Friendly — Optimized for rural usage.
+-Multilingual UI for wider accessibility.
+-Clean, intuitive design with clearly separated sections:
+-Disease Detection
+-NER Extraction
+-Agri Chatbot
 
 ---
 
