@@ -3,8 +3,8 @@ import os
 import random
 import numpy as np
 import torch
-import transformers
 import evaluate
+import inspect
 from datasets import load_dataset, Image as HFImage
 from transformers import AutoImageProcessor, AutoModelForImageClassification, TrainingArguments, Trainer
 
@@ -22,6 +22,11 @@ st.set_page_config(page_title="AgriVerse AI Trainer", layout="wide")
 st.title("🌱 AgriVerse AI Trainer")
 st.write("Train and evaluate multiple AI models for agriculture datasets directly from your browser.")
 
+# Detect correct eval keyword
+eval_kwarg = "evaluation_strategy"
+if "eval_strategy" in inspect.signature(TrainingArguments.__init__).parameters:
+    eval_kwarg = "eval_strategy"
+
 # Sidebar controls
 st.sidebar.header("Select Tasks to Run")
 run_tomato_vit = st.sidebar.checkbox("🍅 Tomato Leaf Disease (ViT)", True)
@@ -38,7 +43,7 @@ start_training = st.sidebar.button("🚀 Start Training")
 # ===============================
 def log(msg):
     st.session_state.logs.append(msg)
-    st.write(msg)
+    log_area.write("\n".join(st.session_state.logs))
 
 if "logs" not in st.session_state:
     st.session_state.logs = []
@@ -47,7 +52,7 @@ if "logs" not in st.session_state:
 # Example: Tomato ViT training
 # ===============================
 def train_tomato_vit():
-    log("Loading Tomato dataset...")
+    log("📂 Loading Tomato dataset...")
     ds = load_dataset("wellCh4n/tomato-leaf-disease-image")
     IMG_COL, LAB_COL = "image", "label"
     if not isinstance(ds["train"].features[IMG_COL], HFImage):
@@ -77,20 +82,22 @@ def train_tomato_vit():
         ignore_mismatched_sizes=True,
     )
 
-    args = TrainingArguments(
-        output_dir="tomato_vit",
-        per_device_train_batch_size=16,
-        per_device_eval_batch_size=32,
-        learning_rate=5e-5,
-        num_train_epochs=2,
-        save_strategy="no",
-        fp16=torch.cuda.is_available(),
-        report_to="none",
-        logging_steps=50,
-        remove_unused_columns=False,
-        dataloader_pin_memory=torch.cuda.is_available(),
-        evaluation_strategy="epoch"
-    )
+    args_kwargs = {
+        "output_dir": "tomato_vit",
+        "per_device_train_batch_size": 16,
+        "per_device_eval_batch_size": 32,
+        "learning_rate": 5e-5,
+        "num_train_epochs": 2,
+        "save_strategy": "no",
+        "fp16": torch.cuda.is_available(),
+        "report_to": "none",
+        "logging_steps": 50,
+        "remove_unused_columns": False,
+        "dataloader_pin_memory": torch.cuda.is_available(),
+        eval_kwarg: "epoch"  # dynamic key here
+    }
+
+    args = TrainingArguments(**args_kwargs)
 
     acc = evaluate.load("accuracy")
     def compute_metrics(eval_pred):
@@ -98,37 +105,57 @@ def train_tomato_vit():
         preds = np.argmax(logits, axis=-1)
         return acc.compute(predictions=preds, references=labels_np)
 
-    log("Starting training...")
+    log("🚀 Starting Tomato ViT training...")
     trainer = Trainer(model=model, args=args,
                       train_dataset=train_ds, eval_dataset=val_ds,
                       compute_metrics=compute_metrics)
     trainer.train()
     results = trainer.evaluate()
-    log(f"Evaluation Results: {results}")
+    log(f"✅ Evaluation Results: {results}")
 
     model.save_pretrained("tomato_vit/model")
     processor.save_pretrained("tomato_vit/processor")
-    log("✅ Model saved to tomato_vit/")
+    log("💾 Model saved to tomato_vit/")
 
 # ===============================
 # Main run
 # ===============================
+log_area = st.empty()
+progress_bar = st.progress(0)
+
 if start_training:
     st.session_state.logs.clear()
+    total_tasks = sum([run_tomato_vit, run_paddy_vit, run_naamapadam_ner, run_wikiann_ner, run_agroqa_qa, run_tomato_mbv3])
+    done = 0
+
     if run_tomato_vit:
         train_tomato_vit()
-    if run_paddy_vit:
-        log("Paddy ViT training not yet implemented.")
-    if run_naamapadam_ner:
-        log("Naamapadam NER training not yet implemented.")
-    if run_wikiann_ner:
-        log("WikiAnn NER training not yet implemented.")
-    if run_agroqa_qa:
-        log("AgroQA QA training not yet implemented.")
-    if run_tomato_mbv3:
-        log("Tomato MobileNetV3 training not yet implemented.")
+        done += 1
+        progress_bar.progress(int((done / total_tasks) * 100))
 
-# Show logs
-st.subheader("📜 Training Logs")
-for entry in st.session_state.logs:
-    st.text(entry)
+    if run_paddy_vit:
+        log("🌾 Paddy ViT training not yet implemented.")
+        done += 1
+        progress_bar.progress(int((done / total_tasks) * 100))
+
+    if run_naamapadam_ner:
+        log("📝 Naamapadam NER training not yet implemented.")
+        done += 1
+        progress_bar.progress(int((done / total_tasks) * 100))
+
+    if run_wikiann_ner:
+        log("🌍 WikiAnn NER training not yet implemented.")
+        done += 1
+        progress_bar.progress(int((done / total_tasks) * 100))
+
+    if run_agroqa_qa:
+        log("💬 AgroQA QA training not yet implemented.")
+        done += 1
+        progress_bar.progress(int((done / total_tasks) * 100))
+
+    if run_tomato_mbv3:
+        log("🍅 Tomato MobileNetV3 training not yet implemented.")
+        done += 1
+        progress_bar.progress(int((done / total_tasks) * 100))
+
+    log("🎉 All selected tasks finished.")
