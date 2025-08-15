@@ -61,7 +61,7 @@ The goal is to **synthesize insights across domains** like weather, crop cycles,
   - mT5-small (multilingual QA)
 ---
 ## Frontend
-##### Unified Agricultural Advisor Interface
+### Unified Agricultural Advisor Interface
 
 The Agriverse frontend is a Streamlit-based web application designed to make our multimodal AI agents accessible in a single, easy-to-use platform.
 
@@ -74,14 +74,14 @@ The Agriverse frontend is a Streamlit-based web application designed to make our
 -Extracts key agricultural entities such as crop names, pest names, and locations from user-provided text.
 -Works with Hindi and other Indic languages for localized insights.
 
-##### Multilingual Agricultural Q&A 
+### Multilingual Agricultural Q&A 
 
 -Chatbot powered by mT5-small for domain-specific question answering.
 -Understands both Hindi and English queries.
 -Provides context-aware, farmer-friendly recommendations.
 
-Knowledge Synthesis
--
+### Knowledge Synthesis
+
 Combines weather, crop cycles, pest control, soil health, and finance data into actionable guidance.
 
 
