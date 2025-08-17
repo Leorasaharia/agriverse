@@ -101,7 +101,12 @@ Below are sample screenshots from the AgriVerse AI Gradio interface showing how 
 <img width="1877" height="850" alt="synopsis1 (4)" src="https://github.com/user-attachments/assets/f395551a-74d9-4d18-9e55-de35ca6aef88" />
 <img width="1891" height="470" alt="synopsis1 (3)" src="https://github.com/user-attachments/assets/3d5a70a1-e735-4bb4-b2d3-a089d13da1fd" />
 <img width="1602" height="416" alt="synopsis1 (2)" src="https://github.com/user-attachments/assets/0b0241de-8643-4907-8460-6012d9c83cd8" />
-
+<img width="970" height="888" alt="image" src="https://github.com/user-attachments/assets/12ad36f9-b40b-448c-b375-76bbf4af6092" />
+<img width="1900" height="959" alt="image" src="https://github.com/user-attachments/assets/feb694e8-83a8-4f14-bcce-9a307a04aa61" />
+<img width="907" height="369" alt="image" src="https://github.com/user-attachments/assets/ff80d2e3-6731-480f-926a-5fee987b91c9" />
+<img width="911" height="711" alt="image" src="https://github.com/user-attachments/assets/a49e8161-d258-457d-b209-e45913b69131" />
+<img width="921" height="479" alt="image" src="https://github.com/user-attachments/assets/6c6c3899-8914-450d-9a55-3054fbca932b" />
+<img width="1139" height="769" alt="image" src="https://github.com/user-attachments/assets/05487428-24ec-4d72-8616-739da4b565fb" />
 
 ---
 
